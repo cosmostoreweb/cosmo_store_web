@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COSMO STORE - Impresión y Sublimación</title>
+    <!-- Carga de Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Pacifico&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #000000; /* Fondo negro */
+            color: #E0E0E0; /* Texto gris claro para contraste */
+            line-height: 1.7;
+        }
+        .text-primary-yellow {
+            color: #FFFF00; /* Amarillo brillante */
+        }
+        .bg-primary-yellow {
+            background-color: #FFFF00; /* Amarillo brillante */
+        }
+        .border-primary-yellow {
+            border-color: #FFFF00; /* Amarillo brillante */
+        }
+        .btn-yellow {
+            background-color: #FFFF00;
+            color: #000000;
+            padding: 0.85rem 2rem;
+            border-radius: 0.75rem; /* Más redondeado */
+            font-weight: 700; /* Más audaz */
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 4px 15px rgba(255, 255, 0, 0.4); /* Sombra amarilla */
+        }
+        .btn-yellow:hover {
+            background-color: #FFD700; /* Un amarillo dorado al pasar el ratón */
+            transform: translateY(-3px); /* Efecto de elevación */
+            box-shadow: 0 6px 20px rgba(255, 255, 0, 0.6);
+        }
+        .section-heading {
+            font-size: 3rem; /* Más grande */
+            font-weight: 800; /* Extra audaz */
+            margin-bottom: 2.5rem;
+            text-align: center;
+            color: #FFFF00; /* Títulos en amarillo */
+            text-shadow: 0 0 15px rgba(255, 255, 0, 0.5); /* Sombra de texto para pop */
+        }
+        .card-glow {
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        .card-glow:hover {
+            box-shadow: 0 0 25px rgba(255, 255, 0, 0.6), 0 0 10px rgba(255, 255, 0, 0.3); /* Doble sombra para efecto de brillo */
+            transform: translateY(-5px);
+        }
+
+        /* Animación de fondo abstracto */
+        @keyframes blob {
+            0% {
+                transform: translate(0px, 0px) scale(1);
+            }
+            33% {
+                transform: translate(30px, -50px) scale(1.1);
+            }
+            66% {
+                transform: translate(-20px, 20px) scale(0.9);
+            }
+            100% {
+                transform: translate(0px, 0px) scale(1);
+            }
+        }
+        .animate-blob {
+            animation: blob 7s infinite cubic-bezier(0.6, 0.01, 0.4, 1);
+        }
+        .animation-delay-2000 {
+            animation-delay: 2s;
+        }
+        .animation-delay-4000 {
+            animation-delay: 4s;
+        }
+
+        /* Estilo para iconos SVG */
+        .icon-lg {
+            width: 3rem;
+            height: 3rem;
+            fill: #FFFF00; /* Color amarillo para los iconos */
+            margin-bottom: 1rem;
+        }
+
+        /* Estilos para la sección de personalización de texto */
+        .text-canvas-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            height: 300px; /* Altura fija para el canvas */
+            margin: 0 auto;
+            border: 2px solid #333;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            background-color: #1a1a1a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .text-preview-canvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+            background-color: #2a2a2a; /* Fondo ligeramente más claro para el canvas */
+            border-radius: 0.75rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Encabezado y Navegación -->
+    <header class="bg-black text-white py-4 shadow-lg border-b border-gray-800">
+        <nav class="container mx-auto flex flex-col md:flex-row justify-between items-center px-4">
+            <div class="text-3xl font-extrabold text-primary-yellow rounded-lg p-2 tracking-wider">COSMO STORE</div>
+            <ul class="flex flex-wrap justify-center md:justify-end space-x-4 mt-4 md:mt-0 text-lg">
+                <li><a href="#inicio" class="hover:text-primary-yellow transition duration-300 rounded-md p-2">Inicio</a></li>
+                <li><a href="#quienes-somos" class="hover:text-primary-yellow transition duration-300 rounded-md p-2">Quienes Somos</a></li>
+                <li><a href="#mision" class="hover:text-primary-yellow transition duration-300 rounded-md p-2">Misión</a></li>
+                <li><a href="#vision" class="hover:text-primary-yellow transition duration-300 rounded-md p-2">Visión</a></li>
+                <li><a href="#servicios" class="hover:text-primary-yellow transition duration-300 rounded-md p-2">Servicios</a></li>
+                <li><a href="#personaliza-texto" class="hover:text-primary-yellow transition duration-300 rounded-md p-2">Personaliza Texto</a></li>
+                <li><a href="#galeria" class="hover:text-primary-yellow transition duration-300 rounded-md p-2">Galería</a></li>
+                <li><a href="#contacto" class="hover:text-primary-yellow transition duration-300 rounded-md p-2">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Sección de Inicio -->
+        <section id="inicio" class="relative bg-gradient-to-br from-gray-900 to-black text-white py-24 md:py-40 text-center overflow-hidden">
+            <div class="container mx-auto px-4 relative z-10">
+                <h1 class="text-6xl md:text-8xl font-extrabold mb-6 leading-tight text-primary-yellow drop-shadow-lg">
+                    ¡Bienvenido a <span class="block mt-2">COSMO STORE!</span>
+                </h1>
+                <p class="text-xl md:text-3xl mb-10 max-w-4xl mx-auto font-light text-gray-200">
+                    Tu universo creativo en Caracas. Somos especialistas en <span class="text-primary-yellow font-semibold">impresión y sublimación</span>, transformando tus ideas en productos únicos y personalizados con <span class="text-primary-yellow font-semibold">calidad y pasión</span>.
+                </p>
+                <a href="#servicios" class="btn-yellow text-xl">Explora Nuestros Servicios</a>
+            </div>
+            <!-- Elementos de diseño abstracto para el fondo -->
+            <div class="absolute inset-0 flex items-center justify-center opacity-15">
+                <div class="w-96 h-96 bg-primary-yellow rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
+                <div class="w-96 h-96 bg-yellow-500 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
+                <div class="w-96 h-96 bg-yellow-600 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000"></div>
+            </div>
+        </section>
+
+        <!-- Sección Quienes Somos -->
+        <section id="quienes-somos" class="bg-gray-950 py-16 md:py-28">
+            <div class="container mx-auto px-4">
+                <h2 class="section-heading">Quienes Somos</h2>
+                <div class="max-w-5xl mx-auto text-xl leading-relaxed text-center text-gray-300">
+                    <p class="mb-6">
+                        En <span class="text-primary-yellow font-semibold">COSMO STORE</span> somos un equipo apasionado por el diseño, la innovación y la personalización. Nacimos en Caracas, Venezuela, con la visión de ofrecer soluciones de <span class="text-primary-yellow font-semibold">impresión y sublimación de alta calidad</span> que superen consistentemente las expectativas de nuestros clientes.
+                    </p>
+                    <p class="mb-6">
+                        Contamos con tecnología de punta, como nuestras impresoras espaciales Epson F170 y el Plotter de Corte Cameo 5, y un talento creativo que nos permite llevar tus ideas del concepto a la realidad, con acabados impecables y una atención meticulosa al detalle. Nos enorgullece ser tu aliado estratégico para proyectos personales, empresariales y eventos especiales, garantizando resultados que brillan.
+                    </p>
+                    <div class="flex justify-center my-8">
+                        <video autoplay muted loop controls class="rounded-xl shadow-lg max-w-full w-[480px] border-2 border-primary-yellow" poster="videos/1.jpg">
+                            <source src="videos/4.mp4" type="video/mp4">
+                            Tu navegador no soporta la reproducción de video.
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    <!-- Sección Misión -->
+    <section id="mision" class="bg-black py-16 md:py-24">
+        <div class="container mx-auto px-4">
+            <h2 class="section-heading">Misión</h2>
+            <p class="max-w-4xl mx-auto text-xl leading-relaxed text-center text-gray-300">
+                Nuestra misión en <span class="text-primary-yellow font-semibold">COSMO STORE</span> es ser la empresa líder en impresión y sublimación en Caracas, ofreciendo productos personalizados de la más alta calidad, con un servicio excepcional y soluciones creativas que inspiren y satisfagan las necesidades de nuestros clientes, construyendo relaciones duraderas basadas en la confianza y la excelencia.
+            </p>
+            <div class="flex justify-center my-8">
+                <video autoplay muted loop controls class="rounded-xl shadow-lg max-w-full w-[480px] border-2 border-primary-yellow" poster="videos/1.jpg">
+                    <source src="videos/5.mp4" type="video/mp4">
+                    Tu navegador no soporta la reproducción de video.
+                </video>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Visión -->
+    <section id="vision" class="bg-gray-950 py-16 md:py-24">
+        <div class="container mx-auto px-4">
+            <h2 class="section-heading">Visión</h2>
+            <p class="max-w-4xl mx-auto text-xl leading-relaxed text-center text-gray-300">
+                Ser reconocidos como el referente de <span class="text-primary-yellow font-semibold">innovación y excelencia</span> en el mercado de la sublimación y papelería creativa en Venezuela, expandiendo nuestro alcance y consolidando una comunidad de clientes satisfechos que confíen en <span class="text-primary-yellow font-semibold">COSMO STORE</span> para todas sus necesidades de personalización, impulsando la creatividad y la expresión individual.
+            </p>
+            <div class="flex justify-center my-8">
+                <video autoplay muted loop controls class="rounded-xl shadow-lg max-w-full w-[480px] border-2 border-primary-yellow" poster="videos/1.jpg">
+                    <source src="videos/6.mp4" type="video/mp4">
+                    Tu navegador no soporta la reproducción de video.
+                </video>
+            </div>
+        </div>
+    </section>
+
+        <!-- Sección Nuestros Servicios -->
+        <section id="servicios" class="bg-black py-16 md:py-28">
+            <div class="container mx-auto px-4">
+                <h2 class="section-heading">Nuestros Servicios</h2>
+                <p class="max-w-5xl mx-auto text-xl leading-relaxed text-center mb-16 text-gray-300">
+                    En <span class="text-primary-yellow font-semibold">COSMO STORE</span>, contamos con la tecnología de vanguardia y el talento creativo para ofrecerte una amplia gama de servicios de personalización, llevando tus ideas a una nueva dimensión:
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                    <!-- Tarjeta de Sublimación y Estampado -->
+                    <div class="bg-gray-900 p-8 rounded-2xl shadow-xl border-2 border-primary-yellow card-glow flex flex-col items-center text-center">
+                        <!-- Icono de Sublimación/Impresión -->
+                        <svg class="icon-lg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 8H5c-1.65 0-3 1.35-3 3v6c0 1.65 1.35 3 3 3h14c1.65 0 3-1.35 3-3v-6c0-1.65-1.35-3-3-3zm-1 9H6c-.55 0-1-.45-1-1v-4c0-.55.45-1 1-1h12c.55 0 1 .45 1 1v4c0 .55-.45 1-1 1zM7 12H5c-.55 0-1 .45-1 1v2c0 .55.45 1 1 1h2c.55 0 1-.45 1-1v-2c0-.55-.45-1-1-1zm14-7H3c-1.1 0-2 .9-2 2v2h22V7c0-1.1-.9-2-2-2zM5 7h14v2H5V7z"/></svg>
+                        <h3 class="text-3xl font-bold text-primary-yellow mb-4">Sublimación y Estampado</h3>
+                        <ul class="list-disc list-inside text-lg space-y-3 text-gray-300 text-left w-full">
+                            <li><span class="font-semibold text-white">Sublimación en Textiles:</span> Personalizamos camisetas, franelas, gorras y más con diseños a todo color y alta durabilidad.</li>
+                            <li><span class="font-semibold text-white">Sublimación en Tazas y Termos:</span> Dale un toque único a tus bebidas favoritas con tazas y termos personalizados.</li>
+                            <li><span class="font-semibold text-white">Artículos Promocionales:</span> Personaliza un sinfín de productos como llaveros, rompecabezas, cojines y más.</li>
+                        </ul>
+                        <p class="mt-8 text-xl font-semibold text-primary-yellow">Equipos de última generación:</p>
+                        <ul class="list-disc list-inside text-base space-y-2 mt-3 text-gray-400 text-left w-full">
+                            <li>Impresora espacial para sublimación Epson F170</li>
+                            <li>Máquina para sublimación de termos y tazas</li>
+                            <li>Plancha automática Craff Express</li>
+                            <li>Mini Plancha para trabajos pequeños</li>
+                        </ul>
+                    </div>
+
+                    <!-- Tarjeta de Impresión Profesional -->
+                    <div class="bg-gray-900 p-8 rounded-2xl shadow-xl border-2 border-primary-yellow card-glow flex flex-col items-center text-center">
+                        <!-- Icono de Impresora -->
+                        <svg class="icon-lg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 8H5c-1.65 0-3 1.35-3 3v6c0 1.65 1.35 3 3 3h14c1.65 0 3-1.35 3-3v-6c0-1.65-1.35-3-3-3zm-1 9H6c-.55 0-1-.45-1-1v-4c0-.55.45-1 1-1h12c.55 0 1 .45 1 1v4c0 .55-.45 1-1 1zM7 12H5c-.55 0-1 .45-1 1v2c0 .55.45 1 1 1h2c.55 0 1-.45 1-1v-2c0-.55-.45-1-1-1zm14-7H3c-1.1 0-2 .9-2 2v2h22V7c0-1.1-.9-2-2-2zM5 7h14v2H5V7z"/></svg>
+                        <h3 class="text-3xl font-bold text-primary-yellow mb-4">Impresión Profesional</h3>
+                        <ul class="list-disc list-inside text-lg space-y-3 text-gray-300 text-left w-full">
+                            <li><span class="font-semibold text-white">Impresión a Color:</span> Ofrecemos impresiones de alta calidad para documentos, presentaciones, folletos y más, con colores nítidos y vibrantes.</li>
+                        </ul>
+                        <p class="mt-8 text-xl font-semibold text-primary-yellow">Equipo:</p>
+                        <ul class="list-disc list-inside text-base space-y-2 mt-3 text-gray-400 text-left w-full">
+                            <li>Impresora a color Epson L3250</li>
+                        </ul>
+                    </div>
+
+                    <!-- Tarjeta de Papelería Creativa -->
+                    <div class="bg-gray-900 p-8 rounded-2xl shadow-xl border-2 border-primary-yellow card-glow flex flex-col items-center text-center">
+                        <!-- Icono de Papelería/Corte -->
+                        <svg class="icon-lg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM8 20H4V4h4v16zm12 0h-8V4h8v16zM13 9h2v2h-2zm0 4h2v2h-2zm0-8h2v2h-2z"/></svg>
+                        <h3 class="text-3xl font-bold text-primary-yellow mb-4">Papelería Creativa</h3>
+                        <ul class="list-disc list-inside text-lg space-y-3 text-gray-300 text-left w-full">
+                            <li><span class="font-semibold text-white">Toppers de Tortas:</span> Diseños únicos para hacer de tus celebraciones momentos inolvidables.</li>
+                            <li><span class="font-semibold text-white">Invitaciones Personalizadas:</span> Para cualquier evento, con un toque original y elegante.</li>
+                            <li><span class="font-semibold text-white">Decoración para Eventos:</span> Banderines, centros de mesa y todo lo que necesitas para una ambientación perfecta.</li>
+                            <li><span class="font-semibold text-white">Cuadernos y Agendas Personalizadas:</span> Organiza tus ideas con estilo.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Tarjeta de Corte de Vinil (separada para mejor visualización) -->
+                    <div class="bg-gray-900 p-8 rounded-2xl shadow-xl border-2 border-primary-yellow card-glow flex flex-col items-center text-center col-span-1 md:col-span-2 lg:col-span-1 mx-auto">
+                        <!-- Icono de Corte -->
+                        <svg class="icon-lg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
+                        <h3 class="text-3xl font-bold text-primary-yellow mb-4">Corte de Vinil</h3>
+                        <ul class="list-disc list-inside text-lg space-y-3 text-gray-300 text-left w-full">
+                            <li><span class="font-semibold text-white">Plotter de Corte Cameo 5:</span> Permite realizar cortes precisos en vinilo para etiquetas, calcomanías, decoración de paredes y mucho más.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Nueva Sección: Personaliza tu Texto (Dinámica) -->
+        <section id="personaliza-texto" class="bg-black py-16 md:py-28">
+            <div class="container mx-auto px-4">
+                <h2 class="section-heading">Personaliza tu Texto</h2>
+                <p class="max-w-3xl mx-auto text-xl leading-relaxed text-center mb-10 text-gray-300">
+                    ¡Crea tu mensaje único! Escribe tu texto, elige la fuente y el color, y previsualiza cómo luciría en tu próximo producto personalizado.
+                </p>
+
+                <div class="flex flex-col md:flex-row items-center justify-center gap-8 mb-12">
+                    <div class="flex flex-col items-center w-full md:w-1/3">
+                        <label for="textInput" class="text-primary-yellow text-lg font-semibold mb-2">Tu Mensaje:</label>
+                        <textarea id="textInput" class="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-700 focus:outline-none focus:border-primary-yellow h-32 resize-none" placeholder="Escribe tu texto aquí..."></textarea>
+                    </div>
+
+                    <div class="flex flex-col items-center w-full md:w-1/3">
+                        <label for="fontSelect" class="text-primary-yellow text-lg font-semibold mb-2">Fuente:</label>
+                        <select id="fontSelect" class="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-700 focus:outline-none focus:border-primary-yellow">
+                            <option value="Inter">Inter</option>
+                            <option value="Pacifico">Pacifico (Script)</option>
+                            <option value="Roboto Mono">Roboto Mono (Monospace)</option>
+                        </select>
+                    </div>
+
+                    <div class="flex flex-col items-center w-full md:w-1/3">
+                        <label for="textColor" class="text-primary-yellow text-lg font-semibold mb-2">Color del Texto:</label>
+                        <input type="color" id="textColor" value="#FFFF00" class="w-full h-12 rounded-lg border border-gray-700 cursor-pointer">
+                    </div>
+                </div>
+
+                <div class="text-canvas-container card-glow">
+                    <canvas id="text-preview-canvas" class="text-preview-canvas" width="500" height="300"></canvas>
+                </div>
+                <p class="text-center text-gray-400 text-sm mt-4">Esta es una previsualización. El resultado final puede variar ligeramente.</p>
+            </div>
+        </section>
+
+        <!-- Sección Galería / Proyectos -->
+        <section id="galeria" class="bg-gray-950 py-16 md:py-28">
+            <div class="container mx-auto px-4">
+                <h2 class="section-heading">Galería / Proyectos</h2>
+                <p class="max-w-5xl mx-auto text-xl leading-relaxed text-center mb-16 text-gray-300">
+                    Explora algunos de nuestros trabajos recientes y déjate inspirar por la calidad, la precisión y la vibrancia que solo <span class="text-primary-yellow font-semibold">COSMO STORE</span> puede ofrecer en cada sublimación e impresión.
+                </p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Placeholder para imágenes de proyectos con efectos -->
+                    <div class="bg-gray-800 rounded-lg overflow-hidden shadow-xl border-2 border-gray-700 transform hover:scale-105 transition duration-300 card-glow">
+                        <img src="https://placehold.co/600x400/333333/FFFF00?text=Taza+Personalizada" alt="Taza Personalizada" class="w-full h-48 object-cover object-center">
+                        <div class="p-6">
+                            <h3 class="font-bold text-2xl text-primary-yellow mb-2">Taza Personalizada</h3>
+                            <p class="text-gray-300 text-base">Diseño vibrante y duradero para un regalo único o uso diario.</p>
+                        </div>
+                    </div>
+                    <div class="bg-gray-800 rounded-lg overflow-hidden shadow-xl border-2 border-gray-700 transform hover:scale-105 transition duration-300 card-glow">
+                        <img src="https://placehold.co/600x400/333333/FFFF00?text=Camiseta+Sublimada" alt="Camiseta Sublimada" class="w-full h-48 object-cover object-center">
+                        <div class="p-6">
+                            <h3 class="font-bold text-2xl text-primary-yellow mb-2">Camiseta Sublimada</h3>
+                            <p class="text-gray-300 text-base">Calidad de impresión excepcional que resiste el tiempo y los lavados.</p>
+                        </div>
+                    </div>
+                    <div class="bg-gray-800 rounded-lg overflow-hidden shadow-xl border-2 border-gray-700 transform hover:scale-105 transition duration-300 card-glow">
+                        <img src="https://placehold.co/600x400/333333/FFFF00?text=Topper+de+Torta" alt="Topper de Torta" class="w-full h-48 object-cover object-center">
+                        <div class="p-6">
+                            <h3 class="font-bold text-2xl text-primary-yellow mb-2">Topper de Torta</h3>
+                            <p class="text-gray-300 text-base">Detalles personalizados que hacen de tus celebraciones momentos inolvidables.</p>
+                        </div>
+                    </div>
+                    <div class="bg-gray-800 rounded-lg overflow-hidden shadow-xl border-2 border-gray-700 transform hover:scale-105 transition duration-300 card-glow">
+                        <img src="https://placehold.co/600x400/333333/FFFF00?text=Termo+Personalizado" alt="Termo Personalizado" class="w-full h-48 object-cover object-center">
+                        <div class="p-6">
+                            <h3 class="font-bold text-2xl text-primary-yellow mb-2">Termo Personalizado</h3>
+                            <p class="text-gray-300 text-base">Estilo y funcionalidad, con tu diseño favorito siempre contigo.</p>
+                        </div>
+                    </div>
+                    <div class="bg-gray-800 rounded-lg overflow-hidden shadow-xl border-2 border-gray-700 transform hover:scale-105 transition duration-300 card-glow">
+                        <img src="https://placehold.co/600x400/333333/FFFF00?text=Papeleria+Creativa" alt="Papelería Creativa" class="w-full h-48 object-cover object-center">
+                        <div class="p-6">
+                            <h3 class="font-bold text-2xl text-primary-yellow mb-2">Papelería Creativa</h3>
+                            <p class="text-gray-300 text-base">Diseños únicos para invitaciones, cuadernos y todo lo que imagines.</p>
+                        </div>
+                    </div>
+                    <div class="bg-gray-800 rounded-lg overflow-hidden shadow-xl border-2 border-gray-700 transform hover:scale-105 transition duration-300 card-glow">
+                        <img src="https://placehold.co/600x400/333333/FFFF00?text=Vinil+Decorativo" alt="Vinil Decorativo" class="w-full h-48 object-cover object-center">
+                        <div class="p-6">
+                            <h3 class="font-bold text-2xl text-primary-yellow mb-2">Vinil Decorativo</h3>
+                            <p class="text-gray-300 text-base">Cortes precisos y vibrantes para personalizar cualquier superficie.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Contacto -->
+        <section id="contacto" class="bg-black py-16 md:py-28">
+            <div class="container mx-auto px-4">
+                <h2 class="section-heading">Contáctanos</h2>
+                <div class="max-w-3xl mx-auto text-xl leading-relaxed text-center text-gray-300">
+                    <p class="mb-8">¡Estamos listos para llevar tus ideas a la realidad con la más alta calidad en impresión y sublimación! No dudes en contactarnos para cualquier consulta o para solicitar una cotización.</p>
+                    <div class="space-y-6">
+                        <p class="flex items-center justify-center gap-3"><span class="font-semibold text-primary-yellow text-2xl">📍</span> <span class="text-white">Caracas, Venezuela</span></p>
+                        <p class="flex items-center justify-center gap-3"><span class="font-semibold text-primary-yellow text-2xl">📞</span> <a href="tel:+584141662577" class="hover:underline text-primary-yellow text-xl">+58 414-1662577</a></p>
+                        <p class="flex items-center justify-center gap-3"><span class="font-semibold text-primary-yellow text-2xl">📧</span> <a href="mailto:info@cosmostore.com" class="hover:underline text-primary-yellow text-xl">info@cosmostore.com</a></p>
+                        <p class="flex items-center justify-center gap-3"><span class="font-semibold text-primary-yellow text-2xl">⏰</span> <span class="text-white">Lunes a Viernes de 9:00 AM a 5:00 PM</span></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección Preguntas Frecuentes -->
+        <section id="faq" class="bg-gray-950 py-16 md:py-24">
+            <div class="container mx-auto px-4">
+                <h2 class="section-heading">Preguntas Frecuentes (FAQ)</h2>
+                <div class="max-w-4xl mx-auto space-y-8">
+                    <div class="bg-gray-900 p-7 rounded-lg shadow-lg border border-gray-700 transition duration-300 hover:border-primary-yellow">
+                        <h3 class="text-2xl font-bold text-primary-yellow mb-3">¿Qué tipo de archivos necesito enviar para mi diseño?</h3>
+                        <p class="text-gray-300 text-lg">Recomendamos encarecidamente archivos en formato vectorial (AI, EPS, SVG) para asegurar la máxima calidad y nitidez en la impresión y sublimación. Sin embargo, también aceptamos formatos como JPG, PNG y PDF, siempre que tengan una alta resolución para evitar pixelado.</p>
+                    </div>
+                    <div class="bg-gray-900 p-7 rounded-lg shadow-lg border border-gray-700 transition duration-300 hover:border-primary-yellow">
+                        <h3 class="text-2xl font-bold text-primary-yellow mb-3">¿Cuál es el tiempo de entrega de un pedido?</h3>
+                        <p class="text-gray-300 text-lg">El tiempo de entrega de cada pedido varía según la complejidad del diseño, la cantidad de productos y la carga de trabajo actual. Al momento de solicitar tu cotización, te proporcionaremos un estimado de tiempo de entrega preciso para tu proyecto.</p>
+                    </div>
+                    <div class="bg-gray-900 p-7 rounded-lg shadow-lg border border-gray-700 transition duration-300 hover:border-primary-yellow">
+                        <h3 class="text-2xl font-bold text-primary-yellow mb-3">¿Realizan envíos fuera de Caracas?</h3>
+                        <p class="text-gray-300 text-lg">Sí, realizamos envíos nacionales a todo el territorio venezolano. Los costos de envío son adicionales y se calcularán en función del destino y el tamaño del pedido. Contáctanos para obtener más detalles sobre nuestras opciones de envío.</p>
+                    </div>
+                    <div class="bg-gray-900 p-7 rounded-lg shadow-lg border-2 border-gray-700 transition duration-300 hover:border-primary-yellow">
+                        <h3 class="text-2xl font-bold text-primary-yellow mb-3">¿Ofrecen descuentos por volumen?</h3>
+                        <p class="text-gray-300 text-lg">¡Absolutamente! Ofrecemos precios especiales y descuentos atractivos para pedidos al mayor. Si tienes un proyecto grande o necesitas una cantidad considerable de productos, no dudes en consultarnos para una cotización personalizada que se ajuste a tus necesidades.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Pie de página -->
+    <footer class="bg-black text-gray-500 py-10 text-center border-t border-gray-800">
+        <div class="container mx-auto px-4">
+            <p class="text-lg">&copy; 2025 COSMO STORE. Todos los derechos reservados.</p>
+            <p class="mt-3 text-md">Diseñado con pasión y precisión en Caracas, Venezuela por Celenia Systems.</p>
+            <div class="mt-6 flex justify-center space-x-6">
+                <a href="#" class="text-gray-400 hover:text-primary-yellow transition duration-300">
+                    <!-- Icono de Instagram -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                </a>
+                <a href="#" class="text-gray-400 hover:text-primary-yellow transition duration-300">
+                    <!-- Icono de Facebook -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-facebook"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                </a>
+                <a href="#" class="text-gray-400 hover:text-primary-yellow transition duration-300">
+                    <!-- Icono de WhatsApp -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-message-circle"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const textInput = document.getElementById('textInput');
+            const fontSelect = document.getElementById('fontSelect');
+            const textColor = document.getElementById('textColor');
+            const textPreviewCanvas = document.getElementById('text-preview-canvas');
+            const ctx = textPreviewCanvas.getContext('2d');
+
+            // Function to draw text on the canvas
+            function drawTextPreview() {
+                // Clear the canvas
+                ctx.clearRect(0, 0, textPreviewCanvas.width, textPreviewCanvas.height);
+
+                // Set background for the preview area
+                ctx.fillStyle = '#2a2a2a'; // Canvas background color
+                ctx.fillRect(0, 0, textPreviewCanvas.width, textPreviewCanvas.height);
+
+                const text = textInput.value || "COSMO STORE"; // Default text if input is empty
+                const font = fontSelect.value;
+                const color = textColor.value;
+
+                ctx.fillStyle = color;
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+
+                // Adjust font size dynamically based on text length to fit
+                let fontSize = 60; // Max font size
+                ctx.font = `${fontSize}px ${font}`;
+                let textWidth = ctx.measureText(text).width;
+
+                // Reduce font size until it fits within 90% of canvas width
+                while (textWidth > textPreviewCanvas.width * 0.9 && fontSize > 10) {
+                    fontSize -= 2;
+                    ctx.font = `${fontSize}px ${font}`;
+                    textWidth = ctx.measureText(text).width;
+                }
+
+                // Split text into lines if it's too long for one line
+                const words = text.split(' ');
+                let line = '';
+                const lines = [];
+                const maxWidth = textPreviewCanvas.width * 0.9; // 90% of canvas width
+
+                for (let n = 0; n < words.length; n++) {
+                    const testLine = line + words[n] + ' ';
+                    const metrics = ctx.measureText(testLine);
+                    const testWidth = metrics.width;
+                    if (testWidth > maxWidth && n > 0) {
+                        lines.push(line);
+                        line = words[n] + ' ';
+                    } else {
+                        line = testLine;
+                    }
+                }
+                lines.push(line);
+
+                const lineHeight = fontSize * 1.2; // 120% of font size
+                const startY = textPreviewCanvas.height / 2 - (lines.length - 1) * lineHeight / 2;
+
+                for (let i = 0; i < lines.length; i++) {
+                    ctx.fillText(lines[i], textPreviewCanvas.width / 2, startY + i * lineHeight);
+                }
+            }
+
+            // Add event listeners to update preview on change
+            textInput.addEventListener('input', drawTextPreview);
+            fontSelect.addEventListener('change', drawTextPreview);
+            textColor.addEventListener('input', drawTextPreview);
+
+            // Initial draw when the page loads
+            drawTextPreview();
+        });
+    </script>
+</body>
+</html>
